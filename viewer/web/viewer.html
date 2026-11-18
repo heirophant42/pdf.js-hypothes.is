@@ -37,8 +37,20 @@ See https://github.com/adobe-type-tools/cmap-resources
 
 
   <script src="viewer.js"></script>
+<script src="https://hypothes.is/embed.js"></script>
 
   <script src="pdfjs-init.js"></script></head>
+<script>
+  (function () {
+    var WORKER = 'https://skibrun.mana0ford.workers.dev/';
+    var params = new URLSearchParams(location.search);
+    if (params.get('file')) return;
+    var u = prompt('Paste a PDF link (or Cancel to open a local file):');
+    if (!u) return;
+    params.set('file', WORKER + '?url=' + encodeURIComponent(u.trim()));
+    location.search = params.toString();
+  })();
+</script>
 
   <body tabindex="1">
     <div id="outerContainer">
