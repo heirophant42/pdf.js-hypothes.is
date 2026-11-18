@@ -1,7 +1,18 @@
-<html>
-<head>
-<meta http-equiv="refresh" content="0; url=viewer/web/viewer.html" />
-</head>
-<body>
+<!doctype html>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PDF → Hypothesis</title>
+<body style="font-family:sans-serif;padding:2em">
+  <h3>Annotate a PDF</h3>
+  <input id="u" type="url" placeholder="Paste PDF URL"
+         style="width:100%;padding:.6em;font-size:1em">
+  <button onclick="go()" style="margin-top:1em;padding:.6em 1.2em">Open in viewer</button>
+  <script>
+    const VIEWER = 'https://heirophant42.github.io/pdf.js-hypothes.is/viewer/web/viewer.html';
+    const WORKER = 'https://skibrun.mana0ford.workers.dev/';
+    function go() {
+      const u = document.getElementById('u').value.trim();
+      location.href = VIEWER + '?file=' +
+        encodeURIComponent(WORKER + '?url=' + encodeURIComponent(u));
+    }
+  </script>
 </body>
-</html>
